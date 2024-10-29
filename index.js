@@ -42,31 +42,32 @@ app.post('/', function (req, res) {
 
         conexao.query(sql, [nomecompleto, email, senha], function(error,result){
             if(error) throw error;
-            res.send("Estudante " + nomecompleto + " cadastrado com sucesso! " + result.insertId);
+            //res.send("Estudante " + nomecompleto + " cadastrado com sucesso! " + result.insertId);
+            res.redirect('/estudantes');
         });
         
     });
 });
 
 
-app.listen(7000);
+//continuar criar READ do banco de dados
+app.get('/estudantes', function(req, res){
+conexao.connect(function(error){
+if(error) console.log(error);
 
-// //importando módulo
-// var conexao = require("./conexaobanco");
+var sql = "select * from estudante";
+//comando de consulta
+conexao.query(sql, function(error,result){
+    if(error) console.log(error);
+    //console.log(result); Mostra no terminal o select
 
+    res.render("estudantes",{estudante:result});
+});
+});
 
-// conexao.connect(function(error){
-//     if(error) throw error;
-//     // console.log("O banco de dados foi conectado!");
-
-//     conexao.query("select * from estudante", function(error,result){
-//         if(error) throw error;
-//         console.log(result);
-//         console.log(result[0].nomecompleto);
-//     });
-
-//});
-
+});
 
 
 
+
+app.listen(8000);
