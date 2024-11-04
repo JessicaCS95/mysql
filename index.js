@@ -70,4 +70,4 @@ conexao.query(sql, function(error,result){
 
 
 
-app.listen(8000);
+app.listen(2000);
