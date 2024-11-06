@@ -12,6 +12,7 @@
             <th>Código</th>
             <th>Nome</th>
             <th>E-mail</th>
+            <th colspan="2">Ação</th>
         </tr>
         <% if (estudante.length > 0) { %>
             <% for(var i =0; i < estudante.length; i++) { %>
@@ -20,7 +21,8 @@
                 <td><%-estudante[i].id %></td>
                 <td><%-estudante[i].nomecompleto %></td>
                 <td><%-estudante[i].email %></td>
-
+                <td><a href="/delete-estudante?id= <%- estudante[i].id %>">Excluir</a></td>
+                <td><a href="/update-estudante?id= <%- estudante[i].id %>">Alterar</a></td>
                 </tr>
                 
             <% } %>
