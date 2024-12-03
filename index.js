@@ -45,7 +45,7 @@ app.post('/', function (req, res) {
             if(error) throw error;
             //res.send("Estudante " + nomecompleto + " cadastrado com sucesso! " + result.insertId);
             res.redirect('/estudantes');
-        });
+        }); 
         
     });
 //});
